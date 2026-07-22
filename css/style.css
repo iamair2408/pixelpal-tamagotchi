@@ -1,0 +1,284 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #fbcfe8, #c7d2fe);
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #334155;
+}
+
+/* Tamagotchi Shell */
+.console {
+    background-color: #ffb7b2;
+    border: 6px solid #ff9aa2;
+    border-radius: 50px 50px 40px 40px;
+    padding: 30px 20px;
+    width: 360px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15), inset 0 5px 15px rgba(255,255,255,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Screen Wrapper */
+.screen-container {
+    background-color: #98c199;
+    border: 5px solid #4a6b4a;
+    border-radius: 15px;
+    width: 300px;
+    height: 360px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.5s ease;
+}
+
+.screen-container.night {
+    background-color: #2b3a4a;
+    color: #cbd5e1;
+}
+
+/* Status Header inside Screen */
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: bold;
+    border-bottom: 2px dashed rgba(0,0,0,0.2);
+    padding-bottom: 4px;
+}
+
+.screen-container.night .status-header {
+    border-bottom-color: rgba(255,255,255,0.2);
+}
+
+/* XP & Level */
+.xp-bar-container {
+    width: 100%;
+    background: rgba(0,0,0,0.1);
+    height: 6px;
+    border-radius: 3px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background-color: #fbbf24;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Pet Display Area */
+.pet-stage {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* CSS Pixel Art Pet */
+.pixel-pet {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    image-rendering: pixelated;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.pixel-pet.sleeping {
+    animation: none;
+    transform: translateY(10px) scaleY(0.8);
+}
+
+/* Building the pet with pixel boxes */
+.px {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+}
+
+.c-body { background-color: #f472b6; }
+.c-eye { background-color: #1e293b; }
+.c-blush { background-color: #fb7185; }
+.c-mouth { background-color: #881337; }
+
+/* Accessories overlays */
+.accessory {
+    position: absolute;
+    display: none;
+    z-index: 10;
+}
+.accessory.active { display: block; }
+
+.acc-bow { top: -8px; left: 24px; font-size: 18px; }
+.acc-crown { top: -12px; left: 24px; font-size: 18px; }
+.acc-glasses { top: 22px; left: 16px; font-size: 18px; }
+
+/* Dialogue / Message */
+.message-box {
+    font-size: 11px;
+    text-align: center;
+    min-height: 20px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+/* Stats Bars at bottom of screen */
+.bars-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 10px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bar-row span { width: 50px; }
+
+.progress-bg {
+    flex-grow: 1;
+    background: rgba(0,0,0,0.15);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.screen-container.night .progress-bg {
+    background: rgba(255,255,255,0.15);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#hunger-fill { background-color: #34d399; }
+#happiness-fill { background-color: #60a5fa; }
+#energy-fill { background-color: #facc15; }
+
+/* Controls / Buttons Area */
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+button {
+    background-color: #fbcfe8;
+    border: 3px solid #db2777;
+    border-radius: 12px;
+    padding: 10px 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    color: #831843;
+    transition: all 0.1s ease;
+    box-shadow: 0 4px 0 #db2777;
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #db2777;
+}
+
+button:hover {
+    background-color: #f472b6;
+    color: white;
+}
+
+.secondary-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    width: 100%;
+    gap: 8px;
+}
+
+.secondary-controls button {
+    flex-grow: 1;
+    background-color: #e0e7ff;
+    border-color: #4f46e5;
+    color: #312e81;
+    box-shadow: 0 4px 0 #4f46e5;
+    font-size: 10px;
+}
+
+.secondary-controls button:hover {
+    background-color: #818cf8;
+    color: white;
+}
+
+.secondary-controls button:active {
+    box-shadow: 0 1px 0 #4f46e5;
+}
+
+/* Modal / Shop */
+.modal {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    display: none;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 280px;
+    text-align: center;
+    border: 4px solid #db2777;
+}
+
+.modal-content h3 { margin-bottom: 10px; color: #db2777; }
+.accessory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px 0;
+}
+.accessory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fdf2f8;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+.accessory-item button {
+    padding: 4px 8px;
+    margin: 0;
+    font-size: 10px;
+}
