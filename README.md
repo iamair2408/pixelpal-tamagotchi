@@ -2,6 +2,8 @@
 
 A retro Tamagotchi-style virtual pet web application built with vanilla JavaScript, CSS pixel art, and LocalStorage persistence.
 
+---
+
 ## ✨ Features
 
 - **CSS Pixel Art Pet**: Fully customized inline-styled pixel character complete with floating and sleeping animations.
@@ -12,8 +14,4 @@ A retro Tamagotchi-style virtual pet web application built with vanilla JavaScri
 - **Daily Rewards**: Claim a daily bonus every 24 hours.
 - **LocalStorage**: Automatically saves all pet stats, inventory, and timestamps.
 
-## 🚀 Getting Started Locally
-
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/pixel-pal-tamagotchi.git](https://github.com/your-username/pixelpal-tamagotchi.git)
+---
