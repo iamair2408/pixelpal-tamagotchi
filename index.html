@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPal - Tamagotchi Pet</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="console">
+        <!-- Tamagotchi Screen -->
+        <div class="screen-container" id="screen">
+            <!-- Top Status -->
+            <div>
+                <div class="status-header">
+                    <span id="level-display">LVL 1</span>
+                    <span id="coins-display">🪙 100</span>
+                    <span id="time-display">☀️ Day</span>
+                </div>
+                <div class="xp-bar-container">
+                    <div class="xp-fill" id="xp-fill"></div>
+                </div>
+            </div>
+
+            <!-- Pet Display -->
+            <div class="pet-stage">
+                <!-- Accessories Overlays -->
+                <div class="accessory acc-bow" id="acc-bow">🎀</div>
+                <div class="accessory acc-crown" id="acc-crown">👑</div>
+                <div class="accessory acc-glasses" id="acc-glasses">🕶️</div>
+
+                <!-- Pixel Sprite -->
+                <div class="pixel-pet" id="pet">
+                    <!-- Ears -->
+                    <div class="px c-body" style="top: 8px; left: 16px;"></div>
+                    <div class="px c-body" style="top: 0px; left: 24px;"></div>
+                    <div class="px c-body" style="top: 8px; left: 40px;"></div>
+                    <div class="px c-body" style="top: 0px; left: 32px;"></div>
+                    <!-- Head & Body -->
+                    <div class="px c-body" style="top: 16px; left: 16px; width: 32px; height: 32px;"></div>
+                    <!-- Eyes -->
+                    <div class="px c-eye" id="eye-left" style="top: 24px; left: 24px;"></div>
+                    <div class="px c-eye" id="eye-right" style="top: 24px; left: 40px;"></div>
+                    <!-- Blush -->
+                    <div class="px c-blush" style="top: 32px; left: 16px;"></div>
+                    <div class="px c-blush" style="top: 32px; left: 48px;"></div>
+                    <!-- Mouth -->
+                    <div class="px c-mouth" id="pet-mouth" style="top: 36px; left: 32px;"></div>
+                    <!-- Feet -->
+                    <div class="px c-body" style="top: 48px; left: 20px;"></div>
+                    <div class="px c-body" style="top: 48px; left: 44px;"></div>
+                </div>
+                <div class="message-box" id="message">PixelPuff is happy!</div>
+            </div>
+
+            <!-- Bars -->
+            <div class="bars-container">
+                <div class="bar-row">
+                    <span>HUNGRY</span>
+                    <div class="progress-bg"><div class="progress-fill" id="hunger-fill"></div></div>
+                </div>
+                <div class="bar-row">
+                    <span>HAPPY</span>
+                    <div class="progress-bg"><div class="progress-fill" id="happiness-fill"></div></div>
+                </div>
+                <div class="bar-row">
+                    <span>ENERGY</span>
+                    <div class="progress-bg"><div class="progress-fill" id="energy-fill"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Action Buttons -->
+        <div class="controls">
+            <button onclick="feedPet()">🍗 Feed</button>
+            <button onclick="playPet()">⚽ Play</button>
+            <button onclick="sleepPet()">💤 Sleep</button>
+        </div>
+
+        <!-- Secondary Controls -->
+        <div class="secondary-controls">
+            <button onclick="openShop()">🎀 Wardrobe</button>
+            <button onclick="claimDaily()">🎁 Daily Reward</button>
+            <button onclick="resetData()">🔄 Reset</button>
+        </div>
+    </div>
+
+    <!-- Wardrobe Modal -->
+    <div class="modal" id="shop-modal">
+        <div class="modal-content">
+            <h3>Wardrobe & Shop</h3>
+            <p style="font-size:11px; margin-bottom:10px;">Customize your pixel pet!</p>
+            <div class="accessory-list">
+                <div class="accessory-item">
+                    <span>None</span>
+                    <button onclick="equipAccessory('none')">Equip</button>
+                </div>
+                <div class="accessory-item">
+                    <span>🎀 Cute Bow (Free)</span>
+                    <button onclick="equipAccessory('bow')">Equip</button>
+                </div>
+                <div class="accessory-item">
+                    <span>👑 Royal Crown (50 🪙)</span>
+                    <button onclick="buyAccessory('crown', 50)">Buy/Equip</button>
+                </div>
+                <div class="accessory-item">
+                    <span>🕶️ Cool Shades (80 🪙)</span>
+                    <button onclick="buyAccessory('glasses', 80)">Buy/Equip</button>
+                </div>
+            </div>
+            <button onclick="closeShop()" style="margin-top:10px; background:#f472b6; color:white;">Close</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+  </html>
+  
